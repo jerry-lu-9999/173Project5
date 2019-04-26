@@ -140,6 +140,23 @@ Gate* new_AndGate() {
 	return this;
 }
 
+//NAND Gate
+static void NAndGate_update(Gate *this){
+  Boolean_setValue(this->output, !(Boolean_getValue(this->inputs[0] && Boolean_getValue(this->inputs[1])));
+}
+
+static void NAndGate_print(Gate *this){
+    BinaryGate_print(this, "NAND");    
+}
+
+Gate* new_NAndGate(){
+  Gate* this = new_BinaryGate();
+  this->inputs[0] = new_Boolean(false);
+  this->inputs[1] = new_Boolean(false);
+  this->update = NAndGate_update;
+  this->print = NAndGate_print;
+  return this;
+}
 //
 // OrGate
 //
@@ -159,6 +176,23 @@ Gate* new_OrGate() {
 	this->update = OrGate_update;
 	this->print = OrGate_print;
 	return this;
+}
+
+static void NOrGate_update(Gate *this){
+  Boolean_setVale(this->output, !(Boolean_getValue(this->inputs[0]) || Boolean_getValue(this->inputs[1])));
+}
+
+static void NOrGate_print(Gate *this){
+  BinaryGate_print(this, "NOR");
+}
+
+Gate* new_NOrGate(){
+   Gate* this = new_BinaryGate();
+   this->inputs[0] = new_Boolean(false);
+   this->inputs[1] = new_Boolean(false);
+   this->update = NOrGate_update;
+   this->print = NOrGate_print;
+   return this;
 }
 
 //
