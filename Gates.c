@@ -142,7 +142,7 @@ Gate* new_AndGate() {
 
 //NAND Gate
 static void NAndGate_update(Gate *this){
-  Boolean_setValue(this->output, !(Boolean_getValue(this->inputs[0] && Boolean_getValue(this->inputs[1])));
+  Boolean_setValue(this->output, !(Boolean_getValue(this->inputs[0]) && Boolean_getValue(this->inputs[1])));
 }
 
 static void NAndGate_print(Gate *this){
@@ -178,8 +178,10 @@ Gate* new_OrGate() {
 	return this;
 }
 
+//Nor GATE
+
 static void NOrGate_update(Gate *this){
-  Boolean_setVale(this->output, !(Boolean_getValue(this->inputs[0]) || Boolean_getValue(this->inputs[1])));
+  Boolean_setValue(this->output, !(Boolean_getValue(this->inputs[0]) || Boolean_getValue(this->inputs[1])));
 }
 
 static void NOrGate_print(Gate *this){
