@@ -99,6 +99,45 @@ static void BinaryGate_print(Gate *this, char *op) {
 	Boolean_print(this->output);
 }
 
+//ternaryGates have three inputs and one single output
+// static Gate* new_TernaryGate(){
+// 	Gate* this = new_Gate();
+// 	this->numInputs = 3;
+// 	this->inputs = new_Boolean_array(this->numInputs);
+// 	return this;
+// }
+
+// static void TernaryGate_print(Gate *this, char *op){
+// 	printf("%s(", op);
+// 	Boolean_print(this->inputs[0]);
+// 	printf(",");
+// 	Boolean_print(this->inputs[1]);
+// 	printf(",");
+// 	Boolean_print(this->inputs[2]);
+//     printf(") -> ");
+// 	Boolean_print(this->output);
+// }
+
+// //quaternary Gates have four inputs and one single output
+// static Gate* new_QuaternaryGate(){
+// 	Gate* this = new_Gate();
+// 	this->numInputs = 4;
+// 	this->inputs = new_Boolean_array(this->numInputs);
+// 	return this;
+// }
+
+// static void Quaternary_print(Gate *this, char *op){
+// 	printf("%s(", op);
+// 	Boolean_print(this->inputs[0]);
+// 	printf(",");
+// 	Boolean_print(this->inputs[1]);
+// 	printf(",");
+// 	Boolean_print(this->inputs[2]);
+//     printf(",");
+//     Boolean_print(this->inputs[3]);
+//     printf(") -> ");    
+// 	Boolean_print(this->output);
+// }
 //
 // Inverter
 //
@@ -120,9 +159,8 @@ Gate* new_Inverter() {
 }
 
 //
-// AndGate
+// AndGate with two inputs
 //
-
 static void AndGate_update(Gate *this) {
 	Boolean_setValue(this->output, Boolean_getValue(this->inputs[0]) && Boolean_getValue(this->inputs[1]));
 }
@@ -139,6 +177,8 @@ Gate* new_AndGate() {
 	this->print = AndGate_print;
 	return this;
 }
+
+//And gate with three inputs
 
 //NAND Gate
 static void NAndGate_update(Gate *this){
